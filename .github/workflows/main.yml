@@ -1,12 +1,30 @@
-name: cypress-testing
-on: push
+name: Cypress Testing
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
- cypress-run:
- runs-on: ubuntu-22.04
- steps:
- - name: Checkout
- uses: actions/checkout@v4
- # Install npm dependencies, cache them correctly
- # and run all Cypress tests
- - name: Cypress run
- uses: cypress-io/github-action@v6
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+
+      - name: Notify Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{"content":"Tests Cypress terminés !"}' \
+               -X POST https://discord.com/api/webhooks/1476152407833710674/sOj89LBsaIGI-nv8yXgf8q7dZHXSp6m4o1CGjIp88Qw3ZdR7bsG3_JUw1MnkiNeL0WoA
