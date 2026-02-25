@@ -1,0 +1,24 @@
+{
+  "name": "cypress-compenents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --reporter junit --reporter-options \"mochaFile=cypress/results/results-[hash].xml,toConsole=true\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mekkinos/cypress-compenents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mekkinos/cypress-compenents/issues"
+  },
+  "homepage": "https://github.com/Mekkinos/cypress-compenents#readme",
+  "dependencies": {
+    "cypress": "^15.10.0"
+  }
+}
